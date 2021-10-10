@@ -1,5 +1,13 @@
     <?php session_start() ?>
+    <?php
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+      $url = "https://";
+    else
+      $url = "http://";
+    $url .= $_SERVER['HTTP_HOST'];
 
+    // $url .= $_SERVER['REQUEST_URI'];
+    ?>
     <!DOCTYPE html>
     <html lang="fr">
 
@@ -14,7 +22,7 @@
 
     <body>
       <nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.php">Navigation</a>
+        <a class="navbar-brand" href="<?= $url ?>/">Navigation</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,14 +32,14 @@
               <a class="nav-link" href="http://moviecollection/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="form.php">Ajouter un film</a>
+              <a class="nav-link" href="<?= $url ?>/form.php">Ajouter un film</a>
             </li>
             <?php if (!isset($_SESSION['log'])) { ?>
               <li class="nav-item">
-                <a class="nav-link" href="template/register.php">Enregistrer</a>
+                <a class="nav-link" href="<?= $url ?>/template/register.php">Enregistrer</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="template/connection.php">Connexion</a>
+                <a class="nav-link" href="<?= $url ?>/template/connection.php">Connexion</a>
               </li>
             <?php }; ?>
             <?php if (isset($_SESSION['log']) === true) {
@@ -40,7 +48,7 @@
                 <p class="helloMessage"> Salut <?= $_SESSION['nickname'] ?> </p>
               </li>
               <li class="nav-item">
-                <a href="../back/deconnection.php" class="nav-link">Déconnexion</a>
+                <a href="<?= $url ?>/back/deconnection.php" class="nav-link">Déconnexion</a>
               </li>
             <?php
             } ?>

@@ -5,6 +5,8 @@
 
 
 <?php
+
+
 if (isset($_SESSION['log']) === true) {
 
   $req = getFilms();
