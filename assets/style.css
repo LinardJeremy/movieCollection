@@ -1,12 +1,13 @@
-body{
-    background-color:#dee9ff;
+body {
+    background-color: #dee9ff;
 }
 
-.registration-form{
-	padding: 50px 0;
+/* style of register form */
+.registration-form {
+    padding: 50px 0;
 }
 
-.registration-form form{
+.registration-form form {
     background-color: #fff;
     max-width: 600px;
     margin: auto;
@@ -16,8 +17,8 @@ body{
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
 }
 
-.registration-form .form-icon{
-	text-align: center;
+.registration-form .form-icon {
+    text-align: center;
     background-color: #5891ff;
     border-radius: 50%;
     font-size: 40px;
@@ -28,17 +29,18 @@ body{
     margin-bottom: 50px;
     line-height: 100px;
 }
-.registration-form label{
+
+.registration-form label {
     margin-bottom: 15px;
 }
 
-.registration-form .item{
-	border-radius: 20px;
+.registration-form .item {
+    border-radius: 20px;
     margin-bottom: 25px;
     padding: 10px 20px;
 }
 
-.registration-form .create-account{
+.registration-form .create-account {
     border-radius: 30px;
     padding: 10px 20px;
     font-size: 18px;
@@ -48,12 +50,13 @@ body{
     color: white;
     margin-top: 20px;
 }
+
 @media (max-width: 576px) {
-    .registration-form form{
+    .registration-form form {
         padding: 50px 20px;
     }
 
-    .registration-form .form-icon{
+    .registration-form .form-icon {
         width: 70px;
         height: 70px;
         font-size: 30px;
@@ -61,10 +64,19 @@ body{
     }
 }
 
-.navbar{
-    color:white;
+.navbar {
+    color: white;
 }
-.buttonDelete{
+
+.helloMessage {
+    color: white;
+    height: 100%;
+    padding: 0.5rem 1rem;
+    vertical-align: center;
+    margin-left: 60px;
+}
+
+.buttonDelete {
     color: white;
     border-radius: 30px;
     padding: 10px 10px;
@@ -72,7 +84,8 @@ body{
     font-weight: bold;
     background-color: rgb(255, 47, 89);
 }
-.buttonUpdate{
+
+.buttonUpdate {
     border-radius: 30px;
     padding: 10px 10px;
     font-size: 18px;
@@ -80,4 +93,15 @@ body{
     background-color: #5791ff;
     border: none;
     color: white;
+}
+
+/* message in index to connect */
+
+.messageAcceuil {
+    margin-top: 250px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 15px;
 }

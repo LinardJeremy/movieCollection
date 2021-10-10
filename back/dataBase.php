@@ -11,9 +11,9 @@ function dbConnect()
     }
 };
 
-function insertInto($movieName, $supportType,$coverImg,$comment){
+function insertInto($table,$movieName, $supportType,$coverImg,$comment){
     $db = dbConnect();
-    $req = $db->prepare('INSERT INTO film(movieName, supportType, coverImg, comment) VALUES(?,?,?,?)');
+    $req = $db->prepare('INSERT INTO '.$table.'(movieName, supportType, coverImg, comment) VALUES(?,?,?,?)');
     $req->execute(array($movieName,$supportType,$coverImg,$comment));
 
 };
@@ -38,6 +38,24 @@ function getOne($id){
     $post=$req->fetch();
     return $post;
 }
+function updateOne($movieName,$supportType,$coverImg,$comment,$id){
+    $db = dbConnect();
+    $req = $db->prepare('UPDATE film SET movieName = ?, supportType = ?, coverImg = ?, comment = ? WHERE id = ?');
+    $req->execute(array($movieName,$supportType,$coverImg,$comment,$id));
+}
 
+// traitement de la table members
+function insertIntoMembers($nickname,$email,$pwd){
+    $db = dbConnect();
+    $req = $db->prepare('INSERT INTO members(nickname, email, pwd) VALUES(?,?,?)');
+    $req->execute(array($nickname,$email,$pwd));
+}
 
+function getOneMember($nickname){
+    $db = dbConnect();
+    $req= $db->prepare("SELECT * FROM members WHERE nickname =?");
+    $req->execute(array($nickname));
+    $member = $req->fetch();
+    return $member;
+}
 ?>
