@@ -6,11 +6,18 @@
 
 <?php
 
+$pageNumber = 1;
+if(isset($_GET['page'])){
+  $pageNumber = intval($_GET['page']);
+}
 
 if (isset($_SESSION['log']) === true) {
 
-  $req = getFilms();
-  $numberMovie = 1;
+  $req = getFilms(($pageNumber-1)*5);
+  $numberMovie = (($pageNumber-1)*5)+1;
+  $reqCount = getCountFilms();
+  $count = floatval($reqCount[0] / 5);
+  $countRound = ceil($count);
 
 ?>
   <table class="table">
@@ -52,6 +59,16 @@ if (isset($_SESSION['log']) === true) {
       ?>
     </tbody>
   </table>
+  <nav aria-label="Page navigation example">
+  <ul class="mx-auto pagination justify-content-center">
+    <?php 
+      for($i=1;$i<=$countRound;$i++){
+        echo '<li class="page-item"><a class="page-link" href="'.$url.'/index.php?page='.$i.'">'.$i.'</a></li>';
+      }   
+    ?>
+  </ul>
+</nav>
+
 <?php } else {
 ?>
   <div class="messageAcceuil">
